@@ -68,7 +68,7 @@ module Split = struct
       | Some o -> o
       | None   -> [| name |]
     in
-    let out_shape = Array.(make (length split) None) in
+    let out_shape = (Array.make (Array.length split) None) in
     { name; input; output; attrs; out_shape; axis; split }
 end
 

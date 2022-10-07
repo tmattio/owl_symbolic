@@ -591,33 +591,33 @@ let build_onnx_type_check (sym_graph : Owl_symbolic_graph.t) =
         | Flatten _               -> type_check_pattern01 ptypes.(0) _tc03 name
         | LSTM _                  ->
           let t = type_check_pattern02 ptypes _tc00 name in
-          (try type_check_pattern01 ptypes.(3) _tc00 |> ignore with
+          (try type_check_pattern01 ptypes.(3) _tc00 name |> ignore with
           | Invalid_argument _ -> ());
-          (try type_check_pattern01 ptypes.(4) [| SNT_Int32 |] |> ignore with
+          (try type_check_pattern01 ptypes.(4) [| SNT_Int32 |] name |> ignore with
           | Invalid_argument _ -> ());
-          (try type_check_pattern01 ptypes.(5) _tc00 |> ignore with
+          (try type_check_pattern01 ptypes.(5) _tc00 name |> ignore with
           | Invalid_argument _ -> ());
-          (try type_check_pattern01 ptypes.(6) _tc00 |> ignore with
+          (try type_check_pattern01 ptypes.(6) _tc00 name |> ignore with
           | Invalid_argument _ -> ());
-          (try type_check_pattern01 ptypes.(7) _tc00 |> ignore with
+          (try type_check_pattern01 ptypes.(7) _tc00 name |> ignore with
           | Invalid_argument _ -> ());
           [| t.(0); t.(0); t.(0) |]
         | RNN _                   ->
           let t = type_check_pattern02 ptypes _tc00 name in
-          (try type_check_pattern01 ptypes.(3) _tc00 |> ignore with
+          (try type_check_pattern01 ptypes.(3) _tc00 name |> ignore with
           | Invalid_argument _ -> ());
-          (try type_check_pattern01 ptypes.(5) _tc00 |> ignore with
+          (try type_check_pattern01 ptypes.(5) _tc00 name |> ignore with
           | Invalid_argument _ -> ());
-          (try type_check_pattern01 ptypes.(4) [| SNT_Int32 |] |> ignore with
+          (try type_check_pattern01 ptypes.(4) [| SNT_Int32 |] name |> ignore with
           | Invalid_argument _ -> ());
           [| t.(0); t.(0) |]
         | GRU _                   ->
           let t = type_check_pattern02 ptypes _tc00 name in
-          (try type_check_pattern01 ptypes.(3) _tc00 |> ignore with
+          (try type_check_pattern01 ptypes.(3) _tc00 name |> ignore with
           | Invalid_argument _ -> ());
-          (try type_check_pattern01 ptypes.(5) _tc00 |> ignore with
+          (try type_check_pattern01 ptypes.(5) _tc00 name |> ignore with
           | Invalid_argument _ -> ());
-          (try type_check_pattern01 ptypes.(4) [| SNT_Int32 |] |> ignore with
+          (try type_check_pattern01 ptypes.(4) [| SNT_Int32 |] name |> ignore with
           | Invalid_argument _ -> ());
           [| t.(0); t.(0) |]
         | RoiAlign _              ->
